@@ -170,7 +170,8 @@ function getProgressSummary_(subjectName) {
   let completedTopics = 0;
 
   for (let i = 1; i < data.length; i++) {
-    const [rowSubject, topicName, status] = data[i];
+    // Column A: ID, Column B: Subject, Column C: Topic Name, Column D: Status, Column E: Notes
+    const [id, rowSubject, topicName, status, notes] = data[i];
 
     if (rowSubject && rowSubject.toString().trim().toLowerCase() === subjectName.toLowerCase() && topicName) {
       totalTopics++;
@@ -211,7 +212,7 @@ function sendTelegramReminder() {
   let messageBlocks = [];
 
   for (let i = 1; i < data.length; i++) {
-    const [subject, voucherDeadlineRaw, examDateRaw, studyInput, bookingInput, status] = data[i];
+    const [id, subject, voucherDeadlineRaw, examDateRaw, studyInput, bookingInput, status] = data[i];
 
     if (!subject || status === "Completed") continue;
 
