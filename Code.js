@@ -170,7 +170,8 @@ function getProgressSummary_(subjectName) {
   let completedTopics = 0;
 
   for (let i = 1; i < data.length; i++) {
-    const [rowSubject, topicName, status] = data[i];
+    // Column A: ID, Column B: Subject, Column C: Topic Name, Column D: Status (Column E: Notes)
+    const [, rowSubject, topicName, status] = data[i];
 
     if (rowSubject && rowSubject.toString().trim().toLowerCase() === subjectName.toLowerCase() && topicName) {
       totalTopics++;
@@ -196,7 +197,11 @@ function getProgressSummary_(subjectName) {
  */
 function sendTelegramReminder() {
   const config = getBotConfig_();
-  if (!config.token || !config.chatId || config.chatId === "TELEGRAM_CHAT_ID") return;
+  // Ensure token and a valid chatId exist before proceeding
+  if (!config.token || !config.chatId || config.chatId === "TELEGRAM_CHAT_ID") {
+    Logger.log("Missing valid Telegram credentials. Skipping broadcast.");
+    return;
+  }
 
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Exams");
   if (!sheet) return;
@@ -211,7 +216,7 @@ function sendTelegramReminder() {
   let messageBlocks = [];
 
   for (let i = 1; i < data.length; i++) {
-    const [subject, voucherDeadlineRaw, examDateRaw, studyInput, bookingInput, status] = data[i];
+    const [id, subject, voucherDeadlineRaw, examDateRaw, studyInput, bookingInput, status] = data[i];
 
     if (!subject || status === "Completed") continue;
 
