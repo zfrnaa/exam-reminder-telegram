@@ -197,7 +197,11 @@ function getProgressSummary_(subjectName) {
  */
 function sendTelegramReminder() {
   const config = getBotConfig_();
-  if (!config.token || !config.chatId || config.chatId === "TELEGRAM_CHAT_ID") return;
+  // Ensure token and a valid chatId exist before proceeding
+  if (!config.token || !config.chatId || config.chatId === "TELEGRAM_CHAT_ID") {
+    Logger.log("Missing valid Telegram credentials. Skipping broadcast.");
+    return;
+  }
 
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Exams");
   if (!sheet) return;
