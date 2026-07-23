@@ -170,8 +170,8 @@ function getProgressSummary_(subjectName) {
   let completedTopics = 0;
 
   for (let i = 1; i < data.length; i++) {
-    // Column A: ID, Column B: Subject, Column C: Topic Name, Column D: Status, Column E: Notes
-    const [id, rowSubject, topicName, status, notes] = data[i];
+    // Column A: ID, Column B: Subject, Column C: Topic Name, Column D: Status (Column E: Notes)
+    const [, rowSubject, topicName, status] = data[i];
 
     if (rowSubject && rowSubject.toString().trim().toLowerCase() === subjectName.toLowerCase() && topicName) {
       totalTopics++;
