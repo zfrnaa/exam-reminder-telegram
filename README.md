@@ -24,7 +24,7 @@ This Google Apps Script turns a custom Google Sheet into an automated exam track
 
 ### Step 1: Copy the Master Google Sheet Template
 
-1. Open the [Exam Schedule Reminder Sheet Template](#) _(https://docs.google.com/spreadsheets/d/1JIqQNj2gPDhQR4NP1_yw8fDjBSo0PaDgOrZaue4HiCU/copy)_.
+1. Open the [Exam Schedule Reminder Sheet Template](https://docs.google.com/spreadsheets/d/1JIqQNj2gPDhQR4NP1_yw8fDjBSo0PaDgOrZaue4HiCU/copy).
 2. Click **Make a copy** to save a personal instance in your own Google Drive.
 
 ---
