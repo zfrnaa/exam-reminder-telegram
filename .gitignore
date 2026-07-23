@@ -1,0 +1,6 @@
+# Clasp local configuration & credentials
+.clasp.json
+.clasprc.json
+
+# Dependencies (if using Node/TypeScript with clasp)
+node_modules/
